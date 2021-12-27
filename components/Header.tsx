@@ -12,13 +12,16 @@ import {
   TabPanels,
   Tabs,
   Text,
+  Tooltip,
   VStack,
 } from "@chakra-ui/react";
 import React from "react";
 
 const Header = () => {
   return (
-    <Container maxW={{ lg: "container.lg", md: "container.md" }}>
+    <Container
+      maxW={{ lg: "container.lg", md: "container.md", sm: "container.sm" }}
+    >
       <VStack w="100%" alignItems="stretch" m={3} borderColor="gray.300">
         <HStack spacing={3}>
           <Image src="/vercel.svg" alt="Vercel" boxSize="100px" />
@@ -79,13 +82,21 @@ const Header = () => {
           >
             Docs
           </Text>
-          <Avatar
-            size="sm"
-            name="Ryan Florence"
-            src="https://bit.ly/ryan-florence"
-          />
+          <Tooltip
+            label="hssnurrahman"
+            fontSize="sm"
+            hasArrow
+            bg="gray.600"
+            arrowSize={8}
+          >
+            <Avatar
+              size="sm"
+              name="Ryan Florence"
+              src="https://bit.ly/ryan-florence"
+            />
+          </Tooltip>
         </HStack>
-        <Tabs colorScheme="gray" defaultIndex={0}>
+        <Tabs isFitted colorScheme="gray" defaultIndex={0}>
           <TabList>
             <Tab
               _hover={{
@@ -148,6 +159,15 @@ const Header = () => {
             </TabPanel>
             <TabPanel>
               <p>two!</p>
+            </TabPanel>
+            <TabPanel>
+              <p>three!</p>
+            </TabPanel>
+            <TabPanel>
+              <p>four!</p>
+            </TabPanel>
+            <TabPanel>
+              <p>five!</p>
             </TabPanel>
           </TabPanels>
         </Tabs>
