@@ -1,42 +1,64 @@
-import { AddIcon, Icon } from "@chakra-ui/icons";
+import { Icon, SearchIcon } from "@chakra-ui/icons";
 import {
   Box,
   Button,
   HStack,
   Image,
   Input,
+  InputGroup,
+  InputLeftElement,
   Text,
+  useColorMode,
   VStack,
 } from "@chakra-ui/react";
+import { useRouter } from "next/router";
 import React from "react";
 import { FaGithub } from "react-icons/fa";
 
 const Projects = () => {
+  const { colorMode } = useColorMode();
+  const router = useRouter();
+
   return (
     <VStack alignItems="stretch" spacing={5} mt={5}>
       <HStack spacing={5}>
-        <Input type="text" placeholder="Search Projects" />
+        <InputGroup>
+          <InputLeftElement>
+            <SearchIcon
+              color={colorMode === "light" ? "gray.300" : "gray.500"}
+            />
+          </InputLeftElement>
+          <Input
+            type="text"
+            placeholder="Search Projects"
+            focusBorderColor={colorMode === "light" ? "gray.700" : "gray.100"}
+          />
+        </InputGroup>
         <Button
+          bgColor={colorMode === "light" ? "gray" : "white"}
           _hover={{
-            bgColor: "white",
+            bgColor: colorMode === "light" ? "white" : "gray.700",
             border: "1px gray solid",
-            color: "gray",
+            color: colorMode === "light" ? "gray" : "white",
           }}
-          border="1px gray solid"
-          leftIcon={<AddIcon w={3} h={3} />}
+          border={colorMode === "light" ? "1px gray solid" : "1px white solid"}
           colorScheme="blackAlpha"
+          color={colorMode === "light" ? "white" : "black"}
+          onClick={() => {
+            router.push("/new");
+          }}
         >
           New Project
         </Button>
       </HStack>
       <HStack spacing={5}>
         <Box
-          bg="gray.100"
+          bg={colorMode === "light" ? "gray.100" : "gray.600"}
           p={4}
           borderRadius={10}
           boxShadow="lg"
           cursor="pointer"
-          _hover={{ bgColor: "gray.50" }}
+          _hover={{ bgColor: colorMode === "light" ? "gray.50" : "gray.700" }}
           onClick={() => {}}
         >
           <HStack>
@@ -57,23 +79,21 @@ const Projects = () => {
           >
             <Text>4d ago via</Text>
             <Icon
-              vertical-align={`middle`}
               as={FaGithub}
               w={5}
               h={5}
-              color="gray.400"
-              cursor="pointer"
-              _hover={{ color: "black" }}
+              color={colorMode === "light" ? "gray.400" : "gray.200"}
+              _hover={{ color: colorMode === "light" ? "black" : "gray.300" }}
             />
           </HStack>
         </Box>
         <Box
-          bg="gray.100"
+          bg={colorMode === "light" ? "gray.100" : "gray.600"}
           p={4}
           borderRadius={10}
           boxShadow="lg"
           cursor="pointer"
-          _hover={{ bgColor: "gray.50" }}
+          _hover={{ bgColor: colorMode === "light" ? "gray.50" : "gray.700" }}
           onClick={() => {}}
         >
           <HStack>
@@ -94,23 +114,21 @@ const Projects = () => {
           >
             <Text>4d ago via</Text>
             <Icon
-              vertical-align={`middle`}
               as={FaGithub}
               w={5}
               h={5}
-              color="gray.400"
-              cursor="pointer"
-              _hover={{ color: "black" }}
+              color={colorMode === "light" ? "gray.400" : "gray.200"}
+              _hover={{ color: colorMode === "light" ? "black" : "gray.300" }}
             />
           </HStack>
         </Box>
         <Box
-          bg="gray.100"
+          bg={colorMode === "light" ? "gray.100" : "gray.600"}
           p={4}
           borderRadius={10}
           boxShadow="lg"
           cursor="pointer"
-          _hover={{ bgColor: "gray.50" }}
+          _hover={{ bgColor: colorMode === "light" ? "gray.50" : "gray.700" }}
           onClick={() => {}}
         >
           <HStack>
@@ -131,13 +149,11 @@ const Projects = () => {
           >
             <Text>4d ago via</Text>
             <Icon
-              vertical-align={`middle`}
               as={FaGithub}
               w={5}
               h={5}
-              color="gray.400"
-              cursor="pointer"
-              _hover={{ color: "black" }}
+              color={colorMode === "light" ? "gray.400" : "gray.200"}
+              _hover={{ color: colorMode === "light" ? "black" : "gray.300" }}
             />
           </HStack>
         </Box>
