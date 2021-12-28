@@ -1,10 +1,12 @@
 import {
   Container,
+  Spacer,
   Tab,
   TabList,
   TabPanel,
   TabPanels,
   Tabs,
+  useColorMode,
   VStack,
 } from "@chakra-ui/react";
 import React from "react";
@@ -13,17 +15,20 @@ import Header from "./Header";
 import Projects from "./Projects";
 
 const Dashboard = () => {
+  const { colorMode } = useColorMode();
+
   return (
     <Container
       maxW={{ lg: "container.lg", md: "container.md", sm: "container.sm" }}
     >
       <VStack alignItems="stretch">
         <Header />
-        <Tabs isFitted colorScheme="gray" defaultIndex={0}>
+        <Tabs isFitted colorScheme="gray" defaultIndex={0} minH={`50vw`}>
           <TabList>
             <Tab
+              _focus={{ focus: "none" }}
               _hover={{
-                bgColor: "gray.200",
+                bgColor: colorMode === "light" ? "gray.200" : "gray.500",
                 borderTopLeftRadius: 8,
                 borderTopRightRadius: 8,
               }}
@@ -33,7 +38,7 @@ const Dashboard = () => {
             <Tab
               isDisabled
               _hover={{
-                bgColor: "gray.200",
+                bgColor: colorMode === "light" ? "gray.200" : "gray.500",
                 borderTopLeftRadius: 8,
                 borderTopRightRadius: 8,
               }}
@@ -43,7 +48,7 @@ const Dashboard = () => {
             <Tab
               isDisabled
               _hover={{
-                bgColor: "gray.200",
+                bgColor: colorMode === "light" ? "gray.200" : "gray.500",
                 borderTopLeftRadius: 8,
                 borderTopRightRadius: 8,
               }}
@@ -53,7 +58,7 @@ const Dashboard = () => {
             <Tab
               isDisabled
               _hover={{
-                bgColor: "gray.200",
+                bgColor: colorMode === "light" ? "gray.200" : "gray.500",
                 borderTopLeftRadius: 8,
                 borderTopRightRadius: 8,
               }}
@@ -63,7 +68,7 @@ const Dashboard = () => {
             <Tab
               isDisabled
               _hover={{
-                bgColor: "gray.200",
+                bgColor: colorMode === "light" ? "gray.200" : "gray.500",
                 borderTopLeftRadius: 8,
                 borderTopRightRadius: 8,
               }}
@@ -73,7 +78,7 @@ const Dashboard = () => {
             <Tab
               isDisabled
               _hover={{
-                bgColor: "gray.200",
+                bgColor: colorMode === "light" ? "gray.200" : "gray.500",
                 borderTopLeftRadius: 8,
                 borderTopRightRadius: 8,
               }}
@@ -99,6 +104,7 @@ const Dashboard = () => {
             </TabPanel>
           </TabPanels>
         </Tabs>
+        <Spacer />
         <Footer />
       </VStack>
     </Container>
