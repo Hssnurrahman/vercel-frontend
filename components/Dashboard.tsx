@@ -21,9 +21,9 @@ const Dashboard = () => {
     <Container
       maxW={{ lg: "container.lg", md: "container.md", sm: "container.sm" }}
     >
-      <VStack alignItems="stretch">
+      <VStack alignItems="stretch" minH={`100vh`}>
         <Header />
-        <Tabs isFitted colorScheme="gray" defaultIndex={0} minH={`50vw`}>
+        <Tabs isFitted colorScheme="gray" defaultIndex={0}>
           <TabList>
             <Tab
               _focus={{ focus: "none" }}
