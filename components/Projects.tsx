@@ -44,6 +44,7 @@ const Projects = () => {
           border={colorMode === "light" ? "1px gray solid" : "1px white solid"}
           colorScheme="blackAlpha"
           color={colorMode === "light" ? "white" : "black"}
+          _focus={{ focus: "none" }}
           onClick={() => {
             router.push("/new");
           }}
