@@ -26,7 +26,7 @@ const SignUpPage = () => {
   const router = useRouter();
 
   React.useEffect(() => {
-    const userData = localStorage.getItem("accesstoken");
+    const userData = localStorage.getItem("username");
 
     console.log(userData);
     if (userData) router.push("/dashboard");
