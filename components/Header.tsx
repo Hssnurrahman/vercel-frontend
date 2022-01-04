@@ -23,8 +23,6 @@ const Header = () => {
 
   const [userData, setUserData]: any = React.useState();
 
-  const [_, setIsLogged] = React.useState(!!localStorage.getItem("jwt"));
-
   const router = useRouter();
 
   React.useEffect(() => {
@@ -41,6 +39,12 @@ const Header = () => {
 
     fetchAuthenticatedUser();
   }, []);
+
+  const logout = () => {
+    localStorage.removeItem("jwt");
+    localStorage.removeItem("username");
+    router.push("/signup");
+  };
 
   return (
     <Container
@@ -141,17 +145,7 @@ const Header = () => {
               <Text fontSize={"medium"}>{userData && userData.name}</Text>
             </MenuButton>
             <MenuList>
-              <MenuItem
-                onClick={() => {
-                  localStorage.removeItem("jwt");
-                  localStorage.removeItem("username");
-                  setIsLogged(false);
-                  router.push("/signup");
-                }}
-                command="shiftP"
-              >
-                Logout
-              </MenuItem>
+              <MenuItem onClick={logout}>Logout</MenuItem>
             </MenuList>
           </Menu>
           <Icon
