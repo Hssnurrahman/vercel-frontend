@@ -19,7 +19,7 @@ const Home: NextPage = () => {
   const router = useRouter();
   // const [show, setShow] = React.useState(false);
   React.useEffect(() => {
-    router.push("/dashboard");
+    router.push("/signup");
   });
 
   return (

@@ -1,8 +1,19 @@
 import Head from "next/head";
 import React from "react";
 import SignUp from "../../components/SignUp";
+// import { useRouter } from "next/router";
 
 const SignUpPage = () => {
+  // const router = useRouter();
+
+  // React.useEffect(() => {
+  //   const accessToken = localStorage.getItem("access_token");
+  //   console.log(accessToken);
+  //   if (accessToken) {
+  //     router.push("/dashboard");
+  //   }
+  // });
+
   return (
     <div>
       <Head>

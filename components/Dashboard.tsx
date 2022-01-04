@@ -1,12 +1,12 @@
 import {
   Container,
   Spacer,
-  Tab,
-  TabList,
-  TabPanel,
-  TabPanels,
-  Tabs,
-  useColorMode,
+  // Tab,
+  // TabList,
+  // TabPanel,
+  // TabPanels,
+  // Tabs,
+  // useColorMode,
   VStack,
 } from "@chakra-ui/react";
 import React from "react";
@@ -15,7 +15,7 @@ import Header from "./Header";
 import Projects from "./Projects";
 
 const Dashboard = () => {
-  const { colorMode } = useColorMode();
+  // const { colorMode } = useColorMode();
 
   return (
     <Container
@@ -23,7 +23,7 @@ const Dashboard = () => {
     >
       <VStack alignItems="stretch" minH={`100vh`}>
         <Header />
-        <Tabs isFitted colorScheme="gray" defaultIndex={0}>
+        {/* <Tabs isFitted colorScheme="gray" defaultIndex={0}>
           <TabList>
             <Tab
               _focus={{ focus: "none" }}
@@ -33,9 +33,9 @@ const Dashboard = () => {
                 borderTopRightRadius: 8,
               }}
             >
-              Overview
-            </Tab>
-            <Tab
+              Overview */}
+        {/* </Tab> */}
+        {/* <Tab
               isDisabled
               _hover={{
                 bgColor: colorMode === "light" ? "gray.200" : "gray.500",
@@ -84,11 +84,11 @@ const Dashboard = () => {
               }}
             >
               Settings
-            </Tab>
-          </TabList>
+            </Tab> */}
+        {/* </TabList>
           <TabPanels>
             <TabPanel>
-              <Projects />
+              
             </TabPanel>
             <TabPanel>
               <p>two!</p>
@@ -103,7 +103,8 @@ const Dashboard = () => {
               <p>five!</p>
             </TabPanel>
           </TabPanels>
-        </Tabs>
+        </Tabs> */}
+        <Projects />
         <Spacer />
         <Footer />
       </VStack>
