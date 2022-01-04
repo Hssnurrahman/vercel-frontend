@@ -41,10 +41,7 @@ const SignUp = () => {
           onClick={toggleColorMode}
         />
       </HStack>
-      <Link
-        href="https://vercel-back-end.herokuapp.com/api/connect/github"
-        passHref
-      >
+      <Link href="http://localhost:1337/api/connect/github" passHref>
         <Button
           bgColor={colorMode === "light" ? "gray" : "white"}
           _hover={{

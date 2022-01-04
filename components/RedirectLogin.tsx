@@ -10,14 +10,11 @@ const LoginRedirect = () => {
   useEffect(() => {
     // Successfully logged with the provider
     // Now logging with strapi by using the access_token (given by the provider) in props.location.search
-    fetch(
-      `https://vercel-back-end.herokuapp.com/api/auth/github/callback${location.search}`,
-      {
-        headers: {
-          Authorization: `${location.search.substring(14, 54)}`,
-        },
-      }
-    )
+    fetch(`http://localhost:1337/api/auth/github/callback${location.search}`, {
+      headers: {
+        Authorization: `${location.search.substring(14, 54)}`,
+      },
+    })
       .then((res) => {
         if (res.status !== 200) {
           throw new Error(`Couldn't login to Strapi. Status: ${res.status}`);

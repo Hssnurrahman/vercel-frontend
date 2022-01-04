@@ -19,9 +19,12 @@ import moment from "moment";
 import React from "react";
 import Footer from "./Footer";
 import Header from "./Header";
+import { useRouter } from "next/router";
 
 const CreateProject = () => {
   const { colorMode } = useColorMode();
+
+  const router = useRouter();
 
   const [userRepositories, setUserRepositories]: any = React.useState([]);
 
@@ -57,7 +60,7 @@ const CreateProject = () => {
             lg: "sm",
             md: "medium",
             sm: "x-large",
-            xl: "2xl",
+            xl: "3xl",
             "2xl": "4xl",
           }}
           fontWeight={"bold"}
@@ -174,6 +177,9 @@ const CreateProject = () => {
                           colorScheme="blackAlpha"
                           color={colorMode === "light" ? "gray" : "black"}
                           _focus={{ focus: "none" }}
+                          onClick={() => {
+                            router.push(`/new/import/${repo.name}`);
+                          }}
                         >
                           Import
                         </Button>
