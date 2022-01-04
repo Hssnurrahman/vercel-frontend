@@ -96,7 +96,7 @@ const Header = () => {
             <ChevronDownIcon />
           </VStack> */}
           <Spacer />
-          <Text
+          {/* <Text
             cursor="pointer"
             color={colorMode === "light" ? "gray.500" : "gray.300"}
             _hover={{ color: colorMode === "light" ? "gray.600" : "gray.400" }}
@@ -123,7 +123,7 @@ const Header = () => {
             _hover={{ color: colorMode === "light" ? "gray.600" : "gray.400" }}
           >
             Docs
-          </Text>
+          </Text> */}
           {/* {userData && (
             <Tooltip
               label={`${userData.name}`}
@@ -141,8 +141,12 @@ const Header = () => {
             </Tooltip>
           )} */}
           <Menu>
-            <MenuButton as={Button} rightIcon={<ChevronDownIcon />}>
-              <Text fontSize={"medium"}>{userData && userData.name}</Text>
+            <MenuButton
+              _focus={{ focus: "none" }}
+              as={Button}
+              rightIcon={<ChevronDownIcon />}
+            >
+              <Text fontSize={{ sm: "sm" }}>{userData && userData.name}</Text>
             </MenuButton>
             <MenuList>
               <MenuItem onClick={logout}>Logout</MenuItem>
