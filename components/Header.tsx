@@ -1,23 +1,29 @@
+import { ChevronDownIcon } from "@chakra-ui/icons";
 import {
-  Avatar,
-  Badge,
+  Button,
   Container,
   HStack,
   Icon,
   Image,
+  Menu,
+  MenuButton,
+  MenuItem,
+  MenuList,
   Spacer,
   Text,
-  Tooltip,
   useColorMode,
   VStack,
 } from "@chakra-ui/react";
 import React from "react";
 import { FaMoon, FaSun } from "react-icons/fa";
+import { useRouter } from "next/router";
 
 const Header = () => {
   const { colorMode, toggleColorMode } = useColorMode();
 
   const [userData, setUserData]: any = React.useState();
+
+  const router = useRouter();
 
   React.useEffect(() => {
     const fetchAuthenticatedUser = async () => {
@@ -33,6 +39,12 @@ const Header = () => {
 
     fetchAuthenticatedUser();
   }, []);
+
+  const logout = () => {
+    localStorage.removeItem("jwt");
+    localStorage.removeItem("username");
+    router.push("/signup");
+  };
 
   return (
     <Container
@@ -50,13 +62,13 @@ const Header = () => {
               boxSize="100px"
             />
           )}
-          <Text
+          {/* <Text
             fontSize={35}
             color={colorMode === "light" ? "gray.100" : "gray.500"}
           >
             /
-          </Text>
-          {userData && (
+          </Text> */}
+          {/* {userData && (
             <Avatar
               size="sm"
               name="Ryan Florence"
@@ -66,7 +78,7 @@ const Header = () => {
           {userData && <Text>{`${userData.name}`}</Text>}
           <Badge p={1} borderRadius={6}>
             Hobby
-          </Badge>
+          </Badge> */}
           {/* <VStack
             d="flex"
             spacing={0}
@@ -112,7 +124,7 @@ const Header = () => {
           >
             Docs
           </Text>
-          {userData && (
+          {/* {userData && (
             <Tooltip
               label={`${userData.name}`}
               fontSize="sm"
@@ -127,7 +139,15 @@ const Header = () => {
                 src={`${userData.avatar_url}`}
               />
             </Tooltip>
-          )}
+          )} */}
+          <Menu>
+            <MenuButton as={Button} rightIcon={<ChevronDownIcon />}>
+              <Text fontSize={"medium"}>{userData && userData.name}</Text>
+            </MenuButton>
+            <MenuList>
+              <MenuItem onClick={logout}>Logout</MenuItem>
+            </MenuList>
+          </Menu>
           <Icon
             as={colorMode === "light" ? FaMoon : FaSun}
             cursor={`pointer`}
