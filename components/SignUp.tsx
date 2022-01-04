@@ -6,7 +6,9 @@ import {
   useColorMode,
   VStack,
 } from "@chakra-ui/react";
-import { FaMoon, FaSun } from "react-icons/fa";
+import Link from "next/link";
+import React from "react";
+import { FaGithub, FaMoon, FaSun } from "react-icons/fa";
 
 const SignUp = () => {
   const { colorMode, toggleColorMode } = useColorMode();
@@ -39,7 +41,25 @@ const SignUp = () => {
           onClick={toggleColorMode}
         />
       </HStack>
-      <Button>Continue With Github</Button>
+      <Link
+        href="https://vercel-back-end.herokuapp.com/api/connect/github"
+        passHref
+      >
+        <Button
+          bgColor={colorMode === "light" ? "gray" : "white"}
+          _hover={{
+            bgColor: colorMode === "light" ? "white" : "gray.700",
+            border: "1px gray solid",
+            color: colorMode === "light" ? "gray" : "white",
+          }}
+          border={colorMode === "light" ? "1px gray solid" : "1px white solid"}
+          colorScheme="blackAlpha"
+          color={colorMode === "light" ? "white" : "black"}
+          _focus={{ focus: "none" }}
+        >
+          <Icon as={FaGithub} /> &nbsp; Continue With Github
+        </Button>
+      </Link>
     </VStack>
   );
 };

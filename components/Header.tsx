@@ -17,6 +17,23 @@ import { FaMoon, FaSun } from "react-icons/fa";
 const Header = () => {
   const { colorMode, toggleColorMode } = useColorMode();
 
+  const [userData, setUserData]: any = React.useState();
+
+  React.useEffect(() => {
+    const fetchAuthenticatedUser = async () => {
+      const accessToken = localStorage.getItem("accesstoken");
+
+      const response = await fetch(`https://api.github.com/user`, {
+        headers: { Authorization: `Bearer ${accessToken}` },
+      });
+      const data = await response.json();
+
+      setUserData(data);
+    };
+
+    fetchAuthenticatedUser();
+  }, []);
+
   return (
     <Container
       maxW={{ lg: "container.lg", md: "container.md", sm: "container.sm" }}
@@ -39,12 +56,14 @@ const Header = () => {
           >
             /
           </Text>
-          <Avatar
-            size="sm"
-            name="Ryan Florence"
-            src="https://bit.ly/ryan-florence"
-          />
-          <Text>Hassan Ur Rahman</Text>
+          {userData && (
+            <Avatar
+              size="sm"
+              name="Ryan Florence"
+              src={`${userData.avatar_url}`}
+            />
+          )}
+          {userData && <Text>{`${userData.name}`}</Text>}
           <Badge p={1} borderRadius={6}>
             Hobby
           </Badge>
@@ -93,19 +112,22 @@ const Header = () => {
           >
             Docs
           </Text>
-          <Tooltip
-            label="hssnurrahman"
-            fontSize="sm"
-            hasArrow
-            bg="gray.600"
-            arrowSize={8}
-          >
-            <Avatar
-              size="sm"
-              name="Ryan Florence"
-              src="https://bit.ly/ryan-florence"
-            />
-          </Tooltip>
+          {userData && (
+            <Tooltip
+              label={`${userData.name}`}
+              fontSize="sm"
+              hasArrow
+              bg="gray.600"
+              color={colorMode === "light" ? "gray.200" : "gray.300"}
+              arrowSize={8}
+            >
+              <Avatar
+                size="sm"
+                name="Ryan Florence"
+                src={`${userData.avatar_url}`}
+              />
+            </Tooltip>
+          )}
           <Icon
             as={colorMode === "light" ? FaMoon : FaSun}
             cursor={`pointer`}
