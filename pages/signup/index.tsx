@@ -1,18 +1,36 @@
 import Head from "next/head";
 import React from "react";
 import SignUp from "../../components/SignUp";
-// import { useRouter } from "next/router";
+import { useRouter } from "next/router";
 
 const SignUpPage = () => {
-  // const router = useRouter();
+  // const [userData, setUserData]: any = React.useState();
 
   // React.useEffect(() => {
-  //   const accessToken = localStorage.getItem("access_token");
-  //   console.log(accessToken);
-  //   if (accessToken) {
-  //     router.push("/dashboard");
-  //   }
+  //   const fetchAuthenticatedUser = async () => {
+  //     const accessToken = localStorage.getItem("accesstoken");
+
+  //     const response = await fetch(`https://api.github.com/user`, {
+  //       headers: { Authorization: `Bearer ${accessToken}` },
+  //     });
+  //     const data = await response.json();
+
+  //     setUserData(data);
+  //   };
+
+  //   console.log(userData);
+
+  //   fetchAuthenticatedUser();
   // });
+
+  const router = useRouter();
+
+  React.useEffect(() => {
+    const userData = localStorage.getItem("accesstoken");
+
+    console.log(userData);
+    if (userData) router.push("/dashboard");
+  }, [router]);
 
   return (
     <div>
