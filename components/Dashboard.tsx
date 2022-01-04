@@ -1,6 +1,7 @@
 import {
   Container,
   Spacer,
+  Text,
   // Tab,
   // TabList,
   // TabPanel,
@@ -17,13 +18,34 @@ import Projects from "./Projects";
 const Dashboard = () => {
   // const { colorMode } = useColorMode();
 
+  const [userData, setUserData]: any = React.useState();
+
+  React.useEffect(() => {
+    const fetchAuthenticatedUser = async () => {
+      const accessToken = localStorage.getItem("accesstoken");
+
+      const response = await fetch(`https://api.github.com/user`, {
+        headers: { Authorization: `Bearer ${accessToken}` },
+      });
+      const data = await response.json();
+
+      setUserData(data);
+    };
+
+    fetchAuthenticatedUser();
+  }, []);
+
+  console.log(userData);
+
   return (
     <Container
       maxW={{ lg: "container.lg", md: "container.md", sm: "container.sm" }}
     >
-      <VStack alignItems="stretch" minH={`100vh`}>
-        <Header />
-        {/* <Tabs isFitted colorScheme="gray" defaultIndex={0}>
+      {!userData && <Text fontSize={"xx-large"}>Loading...</Text>}
+      {userData && (
+        <VStack alignItems="stretch" minH={`100vh`}>
+          <Header />
+          {/* <Tabs isFitted colorScheme="gray" defaultIndex={0}>
           <TabList>
             <Tab
               _focus={{ focus: "none" }}
@@ -34,8 +56,8 @@ const Dashboard = () => {
               }}
             >
               Overview */}
-        {/* </Tab> */}
-        {/* <Tab
+          {/* </Tab> */}
+          {/* <Tab
               isDisabled
               _hover={{
                 bgColor: colorMode === "light" ? "gray.200" : "gray.500",
@@ -85,7 +107,7 @@ const Dashboard = () => {
             >
               Settings
             </Tab> */}
-        {/* </TabList>
+          {/* </TabList>
           <TabPanels>
             <TabPanel>
               
@@ -104,10 +126,11 @@ const Dashboard = () => {
             </TabPanel>
           </TabPanels>
         </Tabs> */}
-        <Projects />
-        <Spacer />
-        <Footer />
-      </VStack>
+          <Projects />
+          <Spacer />
+          <Footer />
+        </VStack>
+      )}
     </Container>
   );
 };

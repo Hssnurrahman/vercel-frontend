@@ -88,11 +88,11 @@ const CreateProject = () => {
                   <Text>vercel-frontend • 16h ago</Text>
                   <Spacer />
                   <Button
-                    bgColor={colorMode === "light" ? "gray" : "white"}
+                    bgColor={colorMode === "light" ? "white" : "white"}
                     _hover={{
-                      bgColor: colorMode === "light" ? "white" : "gray.600",
+                      bgColor: colorMode === "light" ? "gray.600" : "gray.700",
                       border: "1px gray solid",
-                      color: colorMode === "light" ? "gray" : "white",
+                      color: colorMode === "light" ? "white" : "white",
                     }}
                     border={
                       colorMode === "light"
@@ -100,7 +100,7 @@ const CreateProject = () => {
                         : "1px white solid"
                     }
                     colorScheme="blackAlpha"
-                    color={colorMode === "light" ? "white" : "black"}
+                    color={colorMode === "light" ? "gray" : "black"}
                     _focus={{ focus: "none" }}
                   >
                     Import
@@ -124,11 +124,11 @@ const CreateProject = () => {
                   <Text>vercel-frontend • 16h ago</Text>
                   <Spacer />
                   <Button
-                    bgColor={colorMode === "light" ? "gray" : "white"}
+                    bgColor={colorMode === "light" ? "white" : "white"}
                     _hover={{
-                      bgColor: colorMode === "light" ? "white" : "gray.600",
+                      bgColor: colorMode === "light" ? "gray.600" : "gray.700",
                       border: "1px gray solid",
-                      color: colorMode === "light" ? "gray" : "white",
+                      color: colorMode === "light" ? "white" : "white",
                     }}
                     border={
                       colorMode === "light"
@@ -136,7 +136,7 @@ const CreateProject = () => {
                         : "1px white solid"
                     }
                     colorScheme="blackAlpha"
-                    color={colorMode === "light" ? "white" : "black"}
+                    color={colorMode === "light" ? "gray" : "black"}
                     _focus={{ focus: "none" }}
                   >
                     Import
@@ -162,11 +162,11 @@ const CreateProject = () => {
                   <Text>vercel-frontend • 16h ago</Text>
                   <Spacer />
                   <Button
-                    bgColor={colorMode === "light" ? "gray" : "white"}
+                    bgColor={colorMode === "light" ? "white" : "white"}
                     _hover={{
-                      bgColor: colorMode === "light" ? "white" : "gray.600",
+                      bgColor: colorMode === "light" ? "gray.600" : "gray.700",
                       border: "1px gray solid",
-                      color: colorMode === "light" ? "gray" : "white",
+                      color: colorMode === "light" ? "white" : "white",
                     }}
                     border={
                       colorMode === "light"
@@ -174,7 +174,7 @@ const CreateProject = () => {
                         : "1px white solid"
                     }
                     colorScheme="blackAlpha"
-                    color={colorMode === "light" ? "white" : "black"}
+                    color={colorMode === "light" ? "gray" : "black"}
                     _focus={{ focus: "none" }}
                   >
                     Import
@@ -198,11 +198,11 @@ const CreateProject = () => {
                   <Text>vercel-frontend • 16h ago</Text>
                   <Spacer />
                   <Button
-                    bgColor={colorMode === "light" ? "gray" : "white"}
+                    bgColor={colorMode === "light" ? "white" : "white"}
                     _hover={{
-                      bgColor: colorMode === "light" ? "white" : "gray.600",
+                      bgColor: colorMode === "light" ? "gray.600" : "gray.700",
                       border: "1px gray solid",
-                      color: colorMode === "light" ? "gray" : "white",
+                      color: colorMode === "light" ? "white" : "white",
                     }}
                     border={
                       colorMode === "light"
@@ -210,7 +210,7 @@ const CreateProject = () => {
                         : "1px white solid"
                     }
                     colorScheme="blackAlpha"
-                    color={colorMode === "light" ? "white" : "black"}
+                    color={colorMode === "light" ? "gray" : "black"}
                     _focus={{ focus: "none" }}
                   >
                     Import
@@ -236,11 +236,11 @@ const CreateProject = () => {
                   <Text>vercel-frontend • 16h ago</Text>
                   <Spacer />
                   <Button
-                    bgColor={colorMode === "light" ? "gray" : "white"}
+                    bgColor={colorMode === "light" ? "white" : "white"}
                     _hover={{
-                      bgColor: colorMode === "light" ? "white" : "gray.600",
+                      bgColor: colorMode === "light" ? "gray.600" : "gray.700",
                       border: "1px gray solid",
-                      color: colorMode === "light" ? "gray" : "white",
+                      color: colorMode === "light" ? "white" : "white",
                     }}
                     border={
                       colorMode === "light"
@@ -248,7 +248,7 @@ const CreateProject = () => {
                         : "1px white solid"
                     }
                     colorScheme="blackAlpha"
-                    color={colorMode === "light" ? "white" : "black"}
+                    color={colorMode === "light" ? "gray" : "black"}
                     _focus={{ focus: "none" }}
                   >
                     Import
@@ -272,11 +272,11 @@ const CreateProject = () => {
                   <Text>vercel-frontend • 16h ago</Text>
                   <Spacer />
                   <Button
-                    bgColor={colorMode === "light" ? "gray" : "white"}
+                    bgColor={colorMode === "light" ? "white" : "white"}
                     _hover={{
-                      bgColor: colorMode === "light" ? "white" : "gray.600",
+                      bgColor: colorMode === "light" ? "gray.600" : "gray.700",
                       border: "1px gray solid",
-                      color: colorMode === "light" ? "gray" : "white",
+                      color: colorMode === "light" ? "white" : "white",
                     }}
                     border={
                       colorMode === "light"
@@ -284,7 +284,7 @@ const CreateProject = () => {
                         : "1px white solid"
                     }
                     colorScheme="blackAlpha"
-                    color={colorMode === "light" ? "white" : "black"}
+                    color={colorMode === "light" ? "gray" : "black"}
                     _focus={{ focus: "none" }}
                   >
                     Import
@@ -310,11 +310,11 @@ const CreateProject = () => {
                   <Text>vercel-frontend • 16h ago</Text>
                   <Spacer />
                   <Button
-                    bgColor={colorMode === "light" ? "gray" : "white"}
+                    bgColor={colorMode === "light" ? "white" : "white"}
                     _hover={{
-                      bgColor: colorMode === "light" ? "white" : "gray.600",
+                      bgColor: colorMode === "light" ? "gray.600" : "gray.700",
                       border: "1px gray solid",
-                      color: colorMode === "light" ? "gray" : "white",
+                      color: colorMode === "light" ? "white" : "white",
                     }}
                     border={
                       colorMode === "light"
@@ -322,7 +322,7 @@ const CreateProject = () => {
                         : "1px white solid"
                     }
                     colorScheme="blackAlpha"
-                    color={colorMode === "light" ? "white" : "black"}
+                    color={colorMode === "light" ? "gray" : "black"}
                     _focus={{ focus: "none" }}
                   >
                     Import
@@ -346,11 +346,11 @@ const CreateProject = () => {
                   <Text>vercel-frontend • 16h ago</Text>
                   <Spacer />
                   <Button
-                    bgColor={colorMode === "light" ? "gray" : "white"}
+                    bgColor={colorMode === "light" ? "white" : "white"}
                     _hover={{
-                      bgColor: colorMode === "light" ? "white" : "gray.600",
+                      bgColor: colorMode === "light" ? "gray.600" : "gray.700",
                       border: "1px gray solid",
-                      color: colorMode === "light" ? "gray" : "white",
+                      color: colorMode === "light" ? "white" : "white",
                     }}
                     border={
                       colorMode === "light"
@@ -358,7 +358,7 @@ const CreateProject = () => {
                         : "1px white solid"
                     }
                     colorScheme="blackAlpha"
-                    color={colorMode === "light" ? "white" : "black"}
+                    color={colorMode === "light" ? "gray" : "black"}
                     _focus={{ focus: "none" }}
                   >
                     Import
@@ -384,11 +384,11 @@ const CreateProject = () => {
                   <Text>vercel-frontend • 16h ago</Text>
                   <Spacer />
                   <Button
-                    bgColor={colorMode === "light" ? "gray" : "white"}
+                    bgColor={colorMode === "light" ? "white" : "white"}
                     _hover={{
-                      bgColor: colorMode === "light" ? "white" : "gray.600",
+                      bgColor: colorMode === "light" ? "gray.600" : "gray.700",
                       border: "1px gray solid",
-                      color: colorMode === "light" ? "gray" : "white",
+                      color: colorMode === "light" ? "white" : "white",
                     }}
                     border={
                       colorMode === "light"
@@ -396,7 +396,7 @@ const CreateProject = () => {
                         : "1px white solid"
                     }
                     colorScheme="blackAlpha"
-                    color={colorMode === "light" ? "white" : "black"}
+                    color={colorMode === "light" ? "gray" : "black"}
                     _focus={{ focus: "none" }}
                   >
                     Import
@@ -420,11 +420,11 @@ const CreateProject = () => {
                   <Text>vercel-frontend • 16h ago</Text>
                   <Spacer />
                   <Button
-                    bgColor={colorMode === "light" ? "gray" : "white"}
+                    bgColor={colorMode === "light" ? "white" : "white"}
                     _hover={{
-                      bgColor: colorMode === "light" ? "white" : "gray.600",
+                      bgColor: colorMode === "light" ? "gray.600" : "gray.700",
                       border: "1px gray solid",
-                      color: colorMode === "light" ? "gray" : "white",
+                      color: colorMode === "light" ? "white" : "white",
                     }}
                     border={
                       colorMode === "light"
@@ -432,7 +432,7 @@ const CreateProject = () => {
                         : "1px white solid"
                     }
                     colorScheme="blackAlpha"
-                    color={colorMode === "light" ? "white" : "black"}
+                    color={colorMode === "light" ? "gray" : "black"}
                     _focus={{ focus: "none" }}
                   >
                     Import
