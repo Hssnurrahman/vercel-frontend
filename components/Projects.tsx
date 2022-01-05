@@ -101,7 +101,9 @@ const Projects = () => {
                     <Text>hssan.dev</Text>
                   </VStack>
                 </HStack>
-                <Text mt={5}>{project.attributes.commit}</Text>
+                <Text mt={5} noOfLines={1}>
+                  {project.attributes.commit}
+                </Text>
                 <HStack
                   d="flex"
                   alignItems="center"

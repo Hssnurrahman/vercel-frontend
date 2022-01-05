@@ -569,8 +569,6 @@ const ImportProject = () => {
 
                         // const userId = data.id;
 
-                        console.log(data.id);
-
                         await axios.post(
                           "http://localhost:1337/api/projects",
 
@@ -591,9 +589,7 @@ const ImportProject = () => {
                           }
                         );
 
-                        router.push({
-                          pathname: "/dashboard",
-                        });
+                        router.push("/dashboard");
                       } catch (error) {
                         console.error(error);
                       }
