@@ -6,7 +6,6 @@ import {
   AccordionItem,
   AccordionPanel,
   Box,
-  Button,
   Container,
   Divider,
   HStack,
@@ -23,6 +22,7 @@ import {
 import { useRouter } from "next/router";
 import React from "react";
 import { FaCodeBranch, FaFolder, FaGithub, FaInfoCircle } from "react-icons/fa";
+import ButtonComponent from "./ButtonComponent";
 import Header from "./Header";
 
 const ImportProject = () => {
@@ -449,75 +449,19 @@ const ImportProject = () => {
                                 }
                               />
                             </InputGroup>
-                            <Button
-                              bgColor={
-                                colorMode === "light" ? "white" : "white"
-                              }
-                              _hover={{
-                                bgColor:
-                                  colorMode === "light"
-                                    ? "gray.600"
-                                    : "gray.700",
-                                border: "1px gray solid",
-                                color:
-                                  colorMode === "light" ? "white" : "white",
-                              }}
-                              border={
-                                colorMode === "light"
-                                  ? "1px gray solid"
-                                  : "1px white solid"
-                              }
-                              colorScheme="blackAlpha"
-                              color={colorMode === "light" ? "gray" : "black"}
-                              _focus={{ focus: "none" }}
-                              onClick={() => {
-                                const jwt = localStorage.getItem("jwt");
-                                fetch(
-                                  `http://localhost:1337/api/environment-variables`,
-                                  {
-                                    method: "POST",
-                                    headers: {
-                                      Authorization: `Bearer ${jwt}`,
-                                      accept: "application/vnd.github.v3+json",
-                                    },
-                                    body: JSON.stringify({
-                                      name: "DUMMY_NAME",
-                                      value: "DUMMY_VALUE",
-                                    }),
-                                  }
-                                );
-                              }}
-                            >
-                              Add
-                            </Button>
+                            <ButtonComponent text="Add" />
                           </HStack>
                         </VStack>
                       </AccordionPanel>
                     </AccordionItem>
                   </Accordion>
-                  <Button
-                    w={"100%"}
-                    bgColor={colorMode === "light" ? "white" : "white"}
-                    _hover={{
-                      bgColor: colorMode === "light" ? "gray.600" : "gray.700",
-                      border: "1px gray solid",
-                      color: colorMode === "light" ? "white" : "white",
-                    }}
-                    border={
-                      colorMode === "light"
-                        ? "1px gray solid"
-                        : "1px white solid"
-                    }
-                    colorScheme="blackAlpha"
-                    color={colorMode === "light" ? "gray" : "black"}
-                    _focus={{ focus: "none" }}
+                  <ButtonComponent
+                    text="Deploy"
                     onClick={() => {
                       router.push("/new");
                     }}
-                  >
-                    Deploy
-                  </Button>
-                  s
+                    width="100%"
+                  />
                 </VStack>
               </Box>
             </VStack>

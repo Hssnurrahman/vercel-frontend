@@ -2,11 +2,12 @@ import { Button, useColorMode } from "@chakra-ui/react";
 import React from "react";
 
 interface ButtonProps {
-  text: String;
+  text?: string;
+  width?: string | undefined;
   onClick?: () => void | undefined;
 }
 
-const ButtonComponent: React.FC<ButtonProps> = ({ text, onClick }) => {
+const ButtonComponent: React.FC<ButtonProps> = ({ text, onClick, width }) => {
   const { colorMode } = useColorMode();
 
   return (
@@ -22,6 +23,7 @@ const ButtonComponent: React.FC<ButtonProps> = ({ text, onClick }) => {
       color={colorMode === "light" ? "gray" : "black"}
       _focus={{ focus: "none" }}
       onClick={onClick}
+      w={width}
     >
       {text}
     </Button>

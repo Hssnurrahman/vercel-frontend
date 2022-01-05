@@ -1,11 +1,10 @@
-import { Icon, SearchIcon } from "@chakra-ui/icons";
+import { Icon } from "@chakra-ui/icons";
 import {
   Box,
   HStack,
   Image,
   Input,
   InputGroup,
-  InputLeftElement,
   Text,
   useColorMode,
   VStack,
@@ -23,11 +22,6 @@ const Projects = () => {
     <VStack alignItems="stretch" spacing={5} mt={5}>
       <HStack spacing={5}>
         <InputGroup>
-          <InputLeftElement>
-            <SearchIcon
-              color={colorMode === "light" ? "gray.300" : "gray.500"}
-            />
-          </InputLeftElement>
           <Input
             type="text"
             placeholder="Search Projects"
