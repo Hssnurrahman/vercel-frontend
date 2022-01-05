@@ -35,8 +35,6 @@ const Dashboard = () => {
     fetchAuthenticatedUser();
   }, []);
 
-  console.log(userData);
-
   return (
     <Container
       maxW={{ lg: "container.lg", md: "container.md", sm: "container.sm" }}

@@ -1,6 +1,6 @@
-import { Icon } from "@chakra-ui/icons";
 import {
   Box,
+  Flex,
   HStack,
   Image,
   Input,
@@ -9,14 +9,41 @@ import {
   useColorMode,
   VStack,
 } from "@chakra-ui/react";
+import moment from "moment";
 import { useRouter } from "next/router";
 import React from "react";
-import { FaGithub } from "react-icons/fa";
 import ButtonComponent from "./ButtonComponent";
 
 const Projects = () => {
   const { colorMode } = useColorMode();
   const router = useRouter();
+
+  // const [userId, setUserId]: any = React.useState("");
+
+  const [userProjects, setUserProjects]: any = React.useState();
+
+  React.useEffect(() => {
+    const fetchUserProjects = async () => {
+      const jwtToken = localStorage.getItem("jwt");
+
+      const response = await fetch(`http://localhost:1337/api/projects`, {
+        headers: {
+          Authorization: `Bearer ${jwtToken}`,
+          accept: "application/vnd.github.v3+json",
+        },
+      });
+      const data = await response.json();
+
+      const projects = data.data.filter(
+        (project: any) =>
+          project.attributes.userId === project.attributes.userId
+      );
+
+      setUserProjects(projects);
+    };
+
+    fetchUserProjects();
+  }, []);
 
   return (
     <VStack alignItems="stretch" spacing={5} mt={5}>
@@ -35,113 +62,58 @@ const Projects = () => {
           }}
         />
       </HStack>
-      <HStack spacing={5}>
-        <Box
-          bg={colorMode === "light" ? "gray.100" : "gray.600"}
-          p={4}
-          borderRadius={10}
-          boxShadow="lg"
-          cursor="pointer"
-          _hover={{ bgColor: colorMode === "light" ? "gray.50" : "gray.700" }}
-          onClick={() => {}}
-        >
-          <HStack>
-            <Image src="./images/react-logo.svg" alt="React" boxSize={`35px`} />
-            <VStack d="flex" alignItems="flex-start" spacing={0}>
-              <Text fontWeight="semibold">vercel-frontend</Text>
-              <Text>hssan.dev</Text>
-            </VStack>
-          </HStack>
-          <Text mt={5}>
-            Merge pull request #11 from Hssnurrahman/fix/some-errors
-          </Text>
-          <HStack
-            d="flex"
-            alignItems="center"
-            justifyContent="flex-start"
-            mt={6}
-          >
-            <Text>4d ago via</Text>
-            <Icon
-              as={FaGithub}
-              w={5}
-              h={5}
-              color={colorMode === "light" ? "gray.400" : "gray.200"}
-              _hover={{ color: colorMode === "light" ? "black" : "gray.300" }}
-            />
-          </HStack>
-        </Box>
-        <Box
-          bg={colorMode === "light" ? "gray.100" : "gray.600"}
-          p={4}
-          borderRadius={10}
-          boxShadow="lg"
-          cursor="pointer"
-          _hover={{ bgColor: colorMode === "light" ? "gray.50" : "gray.700" }}
-          onClick={() => {}}
-        >
-          <HStack>
-            <Image src="./images/react-logo.svg" alt="React" boxSize={`35px`} />
-            <VStack d="flex" alignItems="flex-start" spacing={0}>
-              <Text fontWeight="semibold">vercel-frontend</Text>
-              <Text>hssan.dev</Text>
-            </VStack>
-          </HStack>
-          <Text mt={5}>
-            Merge pull request #11 from Hssnurrahman/fix/some-errors
-          </Text>
-          <HStack
-            d="flex"
-            alignItems="center"
-            justifyContent="flex-start"
-            mt={6}
-          >
-            <Text>4d ago via</Text>
-            <Icon
-              as={FaGithub}
-              w={5}
-              h={5}
-              color={colorMode === "light" ? "gray.400" : "gray.200"}
-              _hover={{ color: colorMode === "light" ? "black" : "gray.300" }}
-            />
-          </HStack>
-        </Box>
-        <Box
-          bg={colorMode === "light" ? "gray.100" : "gray.600"}
-          p={4}
-          borderRadius={10}
-          boxShadow="lg"
-          cursor="pointer"
-          _hover={{ bgColor: colorMode === "light" ? "gray.50" : "gray.700" }}
-          onClick={() => {}}
-        >
-          <HStack>
-            <Image src="./images/react-logo.svg" alt="React" boxSize={`35px`} />
-            <VStack d="flex" alignItems="flex-start" spacing={0}>
-              <Text fontWeight="semibold">vercel-frontend</Text>
-              <Text>hssan.dev</Text>
-            </VStack>
-          </HStack>
-          <Text mt={5}>
-            Merge pull request #11 from Hssnurrahman/fix/some-errors
-          </Text>
-          <HStack
-            d="flex"
-            alignItems="center"
-            justifyContent="flex-start"
-            mt={6}
-          >
-            <Text>4d ago via</Text>
-            <Icon
-              as={FaGithub}
-              w={5}
-              h={5}
-              color={colorMode === "light" ? "gray.400" : "gray.200"}
-              _hover={{ color: colorMode === "light" ? "black" : "gray.300" }}
-            />
-          </HStack>
-        </Box>
-      </HStack>
+      <Flex
+        d={"flex"}
+        flexWrap={"wrap"}
+        alignItems="stretch"
+        justifyContent={"space-between"}
+      >
+        {userProjects &&
+          userProjects.map((project: any) => {
+            // setUserId(project.attributes.userId);
+            return (
+              <Box
+                w={"31%"}
+                key={project.id}
+                bg={colorMode === "light" ? "gray.100" : "gray.600"}
+                p={4}
+                mb={6}
+                borderRadius={10}
+                boxShadow="lg"
+                cursor="pointer"
+                _hover={{
+                  bgColor: colorMode === "light" ? "gray.50" : "gray.700",
+                }}
+                onClick={() => {}}
+              >
+                <HStack>
+                  <Image
+                    src="./images/react-logo.svg"
+                    alt="React"
+                    boxSize={`35px`}
+                  />
+                  <VStack d="flex" alignItems="flex-start" spacing={0}>
+                    {project && (
+                      <Text fontWeight="semibold">
+                        {project.attributes.name}
+                      </Text>
+                    )}
+                    <Text>hssan.dev</Text>
+                  </VStack>
+                </HStack>
+                <Text mt={5}>{project.attributes.commit}</Text>
+                <HStack
+                  d="flex"
+                  alignItems="center"
+                  justifyContent="flex-start"
+                  mt={6}
+                >
+                  <Text>{moment(project.attributes.updatedAt).fromNow()}</Text>
+                </HStack>
+              </Box>
+            );
+          })}
+      </Flex>
     </VStack>
   );
 };
