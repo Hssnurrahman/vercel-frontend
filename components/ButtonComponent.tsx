@@ -4,7 +4,7 @@ import React from "react";
 interface ButtonProps {
   text?: string;
   width?: string | undefined;
-  onClick?: () => void | undefined;
+  onClick?: () => Promise<void> | void | undefined;
 }
 
 const ButtonComponent: React.FC<ButtonProps> = ({ text, onClick, width }) => {

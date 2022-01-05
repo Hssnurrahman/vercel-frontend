@@ -19,6 +19,7 @@ import {
   useColorMode,
   VStack,
 } from "@chakra-ui/react";
+import axios from "axios";
 import { useRouter } from "next/router";
 import React from "react";
 import { FaCodeBranch, FaFolder, FaGithub, FaInfoCircle } from "react-icons/fa";
@@ -32,6 +33,21 @@ const ImportProject = () => {
   const repoName = router.query.repoName;
 
   const [userRepositry, setUserRepositry]: any = React.useState();
+
+  const [userCommit, setUserCommit]: any = React.useState();
+
+  // * Get Project Data
+
+  const [projectName, setProjectName]: any = React.useState("");
+
+  const [setProjectRootDirectory]: any = React.useState("");
+
+  const [projectBuildCommand, setProjectBuildCommand]: any = React.useState("");
+
+  const [setProjectOutputDirectory]: any = React.useState("");
+
+  const [projectInstallCommand, setProjectInstallCommand]: any =
+    React.useState("");
 
   React.useEffect(() => {
     const fetchUserRepositories = async () => {
@@ -52,10 +68,29 @@ const ImportProject = () => {
       setUserRepositry(data);
     };
 
-    fetchUserRepositories();
-  }, [repoName]);
+    const fetchCommit = async () => {
+      const accessToken = localStorage.getItem("accesstoken");
+      const userName = localStorage.getItem("username");
 
-  //   console.log(userRe);
+      const response = await fetch(
+        `https://api.github.com/repos/${userName}/${repoName}/commits`,
+        {
+          headers: {
+            Authorization: `Bearer ${accessToken}`,
+            accept: "application/vnd.github.v3+json",
+          },
+        }
+      );
+      const data = await response.json();
+
+      setUserCommit(data[0].commit.message);
+
+      // console.log(data[0].commit.message);
+    };
+
+    fetchUserRepositories();
+    fetchCommit();
+  }, [repoName]);
 
   return (
     <Container
@@ -204,7 +239,8 @@ const ImportProject = () => {
                       focusBorderColor={
                         colorMode === "light" ? "gray.700" : "gray.100"
                       }
-                      defaultValue={userRepositry && userRepositry.name}
+                      value={projectName}
+                      onChange={(e) => setProjectName(e.target.value)}
                     />
                   </InputGroup>
                   <InputGroup>
@@ -228,6 +264,7 @@ const ImportProject = () => {
                       }
                       defaultValue={"./"}
                       isDisabled
+                      onChange={(e) => setProjectRootDirectory(e.target.value)}
                     />
                   </InputGroup>
                   <Accordion w={"33rem"} allowToggle>
@@ -253,7 +290,7 @@ const ImportProject = () => {
                             </InputLeftAddon>
                             <Input
                               type="text"
-                              placeholder="Build Command"
+                              placeholder="`npm run build` or `yarn build`"
                               _hover={{
                                 border:
                                   colorMode === "light"
@@ -263,8 +300,10 @@ const ImportProject = () => {
                               focusBorderColor={
                                 colorMode === "light" ? "gray.700" : "gray.100"
                               }
-                              defaultValue={"`npm run build` or `yarn build"}
-                              isDisabled
+                              value={projectBuildCommand}
+                              onChange={(e) =>
+                                setProjectBuildCommand(e.target.value)
+                              }
                             />
                             <Tooltip
                               label={
@@ -312,6 +351,10 @@ const ImportProject = () => {
                               }
                               defaultValue={"Default Directory"}
                               isDisabled
+                              // value={projectOutputDirectory}
+                              onChange={(e) =>
+                                setProjectOutputDirectory(e.target.value)
+                              }
                             />
                             <Tooltip
                               label={
@@ -347,7 +390,7 @@ const ImportProject = () => {
                             </InputLeftAddon>
                             <Input
                               type="text"
-                              placeholder="Install Commed"
+                              placeholder="`npm install` or `yarn install`"
                               _hover={{
                                 border:
                                   colorMode === "light"
@@ -357,8 +400,10 @@ const ImportProject = () => {
                               focusBorderColor={
                                 colorMode === "light" ? "gray.700" : "gray.100"
                               }
-                              defaultValue={"`npm install` or `yarn install`"}
-                              isDisabled
+                              value={projectInstallCommand}
+                              onChange={(e) =>
+                                setProjectInstallCommand(e.target.value)
+                              }
                             />
                             <Tooltip
                               label={`The command that is used to install your Project's software dependencies. If you donot need to install dependencies, override this field and leave it empty.`}
@@ -385,7 +430,7 @@ const ImportProject = () => {
                       </AccordionPanel>
                     </AccordionItem>
 
-                    <AccordionItem>
+                    {/* <AccordionItem>
                       <h2>
                         <AccordionButton _focus={{ focus: "none" }}>
                           <Box flex="1" textAlign="left">
@@ -449,16 +494,109 @@ const ImportProject = () => {
                                 }
                               />
                             </InputGroup>
-                            <ButtonComponent text="Add" />
+                            <ButtonComponent
+                              text="Add"
+                              onClick={async () => {
+                                const jwtToken = localStorage.getItem("jwt");
+
+                                try {
+                                  const { data } = await axios.post(
+                                    "http://localhost:1337/api/evs",
+
+                                    {
+                                      data: {
+                                        name: "my article",
+                                        value: "my super article content",
+                                      },
+                                    },
+                                    {
+                                      headers: {
+                                        Authorization: "Bearer " + jwtToken,
+                                      },
+                                    }
+                                  );
+
+                                  console.log(data);
+                                } catch (error) {
+                                  console.error(error);
+                                }
+                              }}
+                            />
                           </HStack>
+                          <Table variant="striped" colorScheme="blackAlpha">
+                            <Thead>
+                              <Tr>
+                                <Th>Name</Th>
+                                <Th>Value</Th>
+                              </Tr>
+                            </Thead>
+                            <Tbody>
+                              <Tr>
+                                <Td>inches</Td>
+                                <Td>millimetres (mm)</Td>
+                              </Tr>
+                              <Tr>
+                                <Td>feet</Td>
+                                <Td>centimetres (cm)</Td>
+                              </Tr>
+                              <Tr>
+                                <Td>yards</Td>
+                                <Td>metres (m)</Td>
+                              </Tr>
+                            </Tbody>
+                          </Table>
                         </VStack>
                       </AccordionPanel>
-                    </AccordionItem>
+                    </AccordionItem> */}
                   </Accordion>
                   <ButtonComponent
                     text="Deploy"
-                    onClick={() => {
-                      router.push("/new");
+                    onClick={async () => {
+                      const jwtToken = localStorage.getItem("jwt");
+
+                      try {
+                        const response = await fetch(
+                          `http://localhost:1337/api/users/me`,
+                          {
+                            headers: {
+                              Authorization: `Bearer ${jwtToken}`,
+                              accept: "application/vnd.github.v3+json",
+                            },
+                          }
+                        );
+
+                        const data = await response.json();
+
+                        // const userId = data.id;
+
+                        console.log(data.id);
+
+                        await axios.post(
+                          "http://localhost:1337/api/projects",
+
+                          {
+                            data: {
+                              name: projectName,
+                              buildCommand: projectBuildCommand,
+                              installCommand: projectInstallCommand,
+                              repoName: userRepositry && userRepositry.name,
+                              commit: userCommit,
+                              userId: data.id,
+                            },
+                          },
+                          {
+                            headers: {
+                              Authorization: "Bearer " + jwtToken,
+                            },
+                          }
+                        );
+
+                        router.push({
+                          pathname: "/dashboard",
+                        });
+                      } catch (error) {
+                        console.error(error);
+                      }
                     }}
                     width="100%"
                   />
