@@ -1,7 +1,6 @@
 import { SearchIcon } from "@chakra-ui/icons";
 import {
   Box,
-  Button,
   Container,
   Flex,
   HStack,
@@ -16,10 +15,11 @@ import {
   VStack,
 } from "@chakra-ui/react";
 import moment from "moment";
+import { useRouter } from "next/router";
 import React from "react";
+import ButtonComponent from "./ButtonComponent";
 import Footer from "./Footer";
 import Header from "./Header";
-import { useRouter } from "next/router";
 
 const CreateProject = () => {
   const { colorMode } = useColorMode();
@@ -161,28 +161,12 @@ const CreateProject = () => {
                           {moment(repo.updated_at).fromNow()}
                         </Text>
                         <Spacer />
-                        <Button
-                          bgColor={colorMode === "light" ? "white" : "white"}
-                          _hover={{
-                            bgColor:
-                              colorMode === "light" ? "gray.600" : "gray.700",
-                            border: "1px gray solid",
-                            color: colorMode === "light" ? "white" : "white",
-                          }}
-                          border={
-                            colorMode === "light"
-                              ? "1px gray solid"
-                              : "1px white solid"
-                          }
-                          colorScheme="blackAlpha"
-                          color={colorMode === "light" ? "gray" : "black"}
-                          _focus={{ focus: "none" }}
+                        <ButtonComponent
+                          text="Import"
                           onClick={() => {
                             router.push(`/new/import/${repo.name}`);
                           }}
-                        >
-                          Import
-                        </Button>
+                        />
                       </HStack>
                     </Box>
                   );

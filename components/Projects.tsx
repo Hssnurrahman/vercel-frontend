@@ -1,7 +1,6 @@
 import { Icon, SearchIcon } from "@chakra-ui/icons";
 import {
   Box,
-  Button,
   HStack,
   Image,
   Input,
@@ -14,6 +13,7 @@ import {
 import { useRouter } from "next/router";
 import React from "react";
 import { FaGithub } from "react-icons/fa";
+import ButtonComponent from "./ButtonComponent";
 
 const Projects = () => {
   const { colorMode } = useColorMode();
@@ -34,23 +34,12 @@ const Projects = () => {
             focusBorderColor={colorMode === "light" ? "gray.700" : "gray.100"}
           />
         </InputGroup>
-        <Button
-          bgColor={colorMode === "light" ? "white" : "white"}
-          _hover={{
-            bgColor: colorMode === "light" ? "gray.600" : "gray.700",
-            border: "1px gray solid",
-            color: colorMode === "light" ? "white" : "white",
-          }}
-          border={colorMode === "light" ? "1px gray solid" : "1px white solid"}
-          colorScheme="blackAlpha"
-          color={colorMode === "light" ? "gray" : "black"}
-          _focus={{ focus: "none" }}
+        <ButtonComponent
+          text="New Project"
           onClick={() => {
             router.push("/new");
           }}
-        >
-          New Project
-        </Button>
+        />
       </HStack>
       <HStack spacing={5}>
         <Box
