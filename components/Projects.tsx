@@ -1,12 +1,10 @@
-import { Icon, SearchIcon } from "@chakra-ui/icons";
+import { Icon } from "@chakra-ui/icons";
 import {
   Box,
-  Button,
   HStack,
   Image,
   Input,
   InputGroup,
-  InputLeftElement,
   Text,
   useColorMode,
   VStack,
@@ -14,6 +12,7 @@ import {
 import { useRouter } from "next/router";
 import React from "react";
 import { FaGithub } from "react-icons/fa";
+import ButtonComponent from "./ButtonComponent";
 
 const Projects = () => {
   const { colorMode } = useColorMode();
@@ -23,34 +22,18 @@ const Projects = () => {
     <VStack alignItems="stretch" spacing={5} mt={5}>
       <HStack spacing={5}>
         <InputGroup>
-          <InputLeftElement>
-            <SearchIcon
-              color={colorMode === "light" ? "gray.300" : "gray.500"}
-            />
-          </InputLeftElement>
           <Input
             type="text"
             placeholder="Search Projects"
             focusBorderColor={colorMode === "light" ? "gray.700" : "gray.100"}
           />
         </InputGroup>
-        <Button
-          bgColor={colorMode === "light" ? "white" : "white"}
-          _hover={{
-            bgColor: colorMode === "light" ? "gray.600" : "gray.700",
-            border: "1px gray solid",
-            color: colorMode === "light" ? "white" : "white",
-          }}
-          border={colorMode === "light" ? "1px gray solid" : "1px white solid"}
-          colorScheme="blackAlpha"
-          color={colorMode === "light" ? "gray" : "black"}
-          _focus={{ focus: "none" }}
+        <ButtonComponent
+          text="New Project"
           onClick={() => {
             router.push("/new");
           }}
-        >
-          New Project
-        </Button>
+        />
       </HStack>
       <HStack spacing={5}>
         <Box
